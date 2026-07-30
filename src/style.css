@@ -1,0 +1,425 @@
+html, body {
+    margin-left: 0;
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden; 
+    overflow-x: hidden; 
+}
+body {
+    display: inline-block;
+    font-family: sans-serif;
+    background-image: url("assets/churreriabg.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+#titulo {
+    margin : 0;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    height: 10%;
+}
+
+h1 {
+    margin: 0;
+    color: #5e3837; 
+    justify-content: center;
+    font-family: "Product Sans", Arial;
+    width: 100%;
+    text-align: center;
+}
+
+.contenedor{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    height:40%;
+}
+
+#contenedorMensaje {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+p {
+    margin: 0;
+    background-color: #eeead2a2;
+    border-radius: 10px;
+    width: 35%;
+}
+
+.carrito{
+    margin-top: 10px;
+    height: 50%;
+    max-height: 50%;
+    height: auto;
+    width: 70%;
+}
+
+.divCarrito{
+    float: left;
+    background-color: #eeead270;
+    border: 1px solid black;
+    border-radius: 10px;
+    min-width: 20%;
+    width: 78%;
+    min-height: 70%;
+    height: 150px;
+    margin : 0;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+
+#tablaCarrito {
+    background-color: #eeead283;
+    max-height: 300px;
+    width: 100%;
+    height: 100%;
+    max-height: 20px;
+}
+
+.botonCarrito{
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    height: 50%;
+    max-height: 100% ;
+}
+
+#confirmarCarrito {
+    min-width: 30px;
+    height: 27px;
+    width: 100%;
+}
+
+#totalYConfirmar {
+    display: flex;
+    flex-direction: column;
+    min-width: 13%;
+    width: 17%;
+    height: 100%;
+}
+
+
+#totalCarrito {
+    width: 100%;
+    min-width: 45px;
+    height: 15%;
+    min-height: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: auto;
+    background-color: #eeead2;
+}
+
+span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 80%;
+    width: 100%;
+    height: auto;
+}
+
+
+.columnasCarrito, #cuerpoCarrito {
+    font-size: 15px;
+}
+.columnasCarrito {
+    min-width: 30%;
+    width: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 0;
+}
+
+.columnaPago {
+    width: 13%;
+    border: 1px solid black;
+}
+
+
+.botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    gap: 3%;
+    width: 90%;
+    min-width: 70%;
+    max-width: 100%;
+}
+
+
+
+.inputsVenta {
+    background-color:#ffffff93;
+    outline: 0;
+    height: 40%;
+    max-height: 40%;
+}
+
+input:focus {
+    border-radius: 4px;
+    border: 2px solid orange;
+    outline-color: orange;
+}
+
+
+select {
+    min-width: 10%;
+    width: 13%;
+    background-color:#ffffff93;
+    border: 2px solid black;
+    outline: 0;
+    height: 50%;
+}
+
+select:focus {
+    border-radius: 4px;
+    border: 3px solid orange;
+    outline-color: orange;
+}
+
+
+
+button {
+    background-color: #ffffffc4;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+#datosFinales {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    width: 100%;
+    height: 30%;
+    gap: 3%;
+}
+
+.contenedorDelivery{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 30px;
+    gap: 7%;
+    margin: 0;
+}
+
+#checkDelivery{
+    height: 35%;
+    max-height: 40%;
+}
+
+#checkDelivery:focus {
+    outline-color: orange;
+}
+
+
+label {
+    display: flex;
+    align-items:center;
+    background-color: #ffffff70;
+    font-size: 18px;
+    color: #5e3837;
+    margin: 0;
+    border: 2px solid black;
+    border-radius: 4px;
+    min-width: 130px
+}
+
+
+.cuerpoProductos {
+    flex-direction: column-reverse;
+    font-size: 15px;
+}
+
+.tablaApilada {
+    width: 100%;
+}
+
+ th {
+    position: sticky;
+    top: 0;
+    background-color: #eeead2; 
+    z-index: 0; 
+    border: 1px solid black;
+}
+
+.contenedorProductos {
+    width: 95%;
+    margin-bottom: 1em;
+    min-height: 40%;
+    max-height: 55%;
+    overflow-y: auto;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40%;
+}
+
+
+#tablaDeProductos {
+    background-color: #eeead283;
+    width: 100%;
+    font-size: 18px;
+    border-collapse:collapse ;
+    max-height: 70%;
+}
+
+
+td {
+    font-size: 20px;
+}
+
+#void {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    border:0;
+}
+
+
+.columnas {
+    width: 14.1%;
+    border: 1px solid black;
+}
+
+.columnasId, .columnaIdApilada {
+    width:4%;
+    max-width: 6%;
+    border: 1px solid black;
+}
+
+
+.columnasApiladas {
+    width: 25%;
+    border-collapse: collapse;
+}
+
+.bodyProductosApilados {
+    border-collapse: collapse;
+}
+
+.ultColumna {
+    min-width: 5%;
+    width: 5%;
+    max-width: 5%;
+}
+
+#botonesUltColumna {
+    border: 1px solid  black;
+}
+
+
+
+.eliminar {
+    justify-items: center;
+    align-items: center;
+    width: 1%;
+    min-width: none;
+}
+
+
+#elimFila,
+#imprFila {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 0;
+}
+
+#elimFila {
+    float: right;
+    background-color: rgba(230, 20, 20, 0.5);
+  }
+  
+  #imprFila {
+    float: left;
+    background-color: rgba(255, 255, 255, 0.76);
+    margin-left: 2px;
+  }
+
+#logoImprimir {
+    width: 16px;
+    height: 16px;
+  }
+
+
+.filaMultiple {
+    border-collapse: collapse;
+    width: 10%;
+    border: 1px solid black;
+}
+
+
+.visible{
+    display: block;
+}
+
+
+.oculto {
+    display: none;   
+}
+
+.columnasPrueba {
+    border: 1px solid black;
+    height: 100%;
+}
+
+
+.infoEnvio:disabled {
+    border: 0px solid black;
+}
+
+.infoEnvio:enabled {
+    border: 3px solid orange;
+    background-color: white;
+    border-radius: 5px;
+}
+
+
+/* #precioDelivery:disabled {
+    border: 0 solid orange;
+    height: 43.3%;
+
+}
+
+#precioDelivery:enabled {
+    border: 3px solid orange;
+    background-color: white;
+    border-radius: 5px;
+    height: 40%;
+} */
+
+
+#delivery {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    width: 40%;
+    height: 100%;
+}
+
+.inputsDelivery {   
+    background-color:#ffffffc7;
+    outline: 0;
+    width: 35%;
+    height: 40%;
+}

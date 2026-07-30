@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Churreria Stock</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="assets/logoIcono.icoz" />
+  </head>
+  <body>
+    <!-- Titulo -->
+    <div id="titulo">
+      <h1>Churreria Al Paso</h1>
+    </div>
+<!-- Primer Contenedor -->
+    <div class="contenedor">
+      <div class="botones"> <!--Div de botones -->
+        <input
+          type="text"
+          id="nombreProducto"
+          class="inputsVenta"
+          placeholder="Nombre del Producto"
+        />
+        <input type="number" oninput="this.value = this.value.replace(/[^0-9]/, '')" id="cantidad" placeholder="Cantidad" class="inputsVenta"/>
+        <input type="number" oninput="this.value = this.value.replace(/[^0-9]/, '')" id="precio" placeholder="Precio" class="inputsVenta"/>
+        <button id="agregar">Agregar Producto</button>
+      </div>
+<!-- Div de mensaje si no se completan los campos -->
+      <div id="contenedorMensaje">
+        <p id="mensaje"></p>
+      </div>
+      <!-- Div del carrito + Boton -->
+      <div class="carrito">
+        <!-- Div carrito solo -->
+        <div class="divCarrito">
+          <!-- Tabla Carrito -->
+          <table id="tablaCarrito">
+            <thead>
+              <tr>
+                <th class="columnasCarrito">Producto</th>
+                <th class="columnasCarrito">Cantidad</th>
+                <th class="columnasCarrito">Precio</th>
+              </tr>
+            </thead>
+            <!-- Cuerpo del carrito -->
+            <tbody id="cuerpoCarrito">
+            </tbody>
+          </table>
+        </div>
+        <div id="totalYConfirmar">
+        <!-- Div del Total del carrito -->
+        <div id="totalCarrito">
+          <span id="spanTotal"><span><strong>TOTAL: $0</strong></span></span>
+        </div>
+
+      </div>
+      </div>
+      <!-- Div de todo el carrito final -->
+      <div id="datosFinales">
+
+
+        <!-- Checkbox de Delivery -->
+      <label>
+        <input id="checkDelivery" type="checkbox"><strong>¿Con envío?</strong>
+      </label>  
+              <!-- Div del delivery -->
+              <div id="delivery" hidden>
+      <!-- Contenedor de campos de delivery -->
+
+        <input id="direccionDelivery" class="infoEnvio inputsDelivery" type="text" placeholder="Dirección" >
+        <input id="nombreDelivery" oninput="this.value = this.value.replace(/[^a-z A-Z]/, '')" class="infoEnvio inputsDelivery" type="text" placeholder="Nombre Cliente" >
+        <input id="numeroDelivery" oninput="this.value = this.value.replace(/[^0-9 -]/, '')" class="infoEnvio inputsDelivery" type="text" placeholder="Num Telefono" >
+        <input id="precioDelivery" oninput="this.value = this.value.replace(/[^0-9]/, '')"  class="infoEnvio inputsDelivery" type="number" placeholder="Costo Envio">
+        <!-- <select id="precioDelivery" required >
+          <option value="" disabled selected hidden >Costo Envio</option>
+          <option value="2000">2000</option>
+          <option value="2500" >2500</option>
+        </select> -->
+
+      </div>
+      <!-- Opciones de metodo de pago -->
+        <select id="metodoPago" required>
+          <option value="" disabled selected hidden >Metodo de Pago</option>
+          <option value="efectivo">Efectivo</option>
+          <option value="transferencia">Transferencia</option>
+        </select>
+        <!-- Boton de confirmar carrito -->
+        <div class="botonCarrito">
+          <button id="confirmarCarrito"><strong>Confirmar</strong></button>
+        </div>
+
+    </div>
+    
+    </div>      <!-- Cierre del div contenedor -->
+
+
+    <div class="contenedorProductos">
+      <table id="tablaDeProductos">
+        <thead class="dataTabla">
+          <tr>
+            <th class="columnasId oculto">Id</th>
+            <th class="columnas">Producto</th>
+            <th class="columnas">Cantidad</th>
+            <th class="columnas">Precio</th>
+            <th class="columnas">Dirección</th>
+            <th class="columnas">Datos Cliente</th>
+            <th class="columnas">Valor Envío</th>
+            <th class="columnaPago">Metodo</th>
+            <th class="ultColumna"></th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoProductos"></tbody>
+      </table>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
+</html>

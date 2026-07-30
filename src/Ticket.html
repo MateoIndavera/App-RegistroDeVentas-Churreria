@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>La churreria</title>
+        <style>
+            
+    html{
+            width: 72mm;
+            max-height: 210mm;
+            margin: 0;
+    
+        }
+        body {
+        min-width: 72mm;
+        width: 72mm;
+        max-width: 72mm;
+        max-height: 210mm;
+        margin: 0;
+        font-family: sans-serif;
+        border: 3px solid black;
+    }
+    
+            
+            hr {
+                color: black;
+                width: 95%;
+                border: 1px solid black;
+            }
+            
+            .redes{
+                height: 0.5mm;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            h2 {
+                font-size: 12px;
+            }
+            
+            .contenedorLogo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                font-size: 20px;
+                margin-top: 14px;
+            }
+            
+            .logoTicket {
+                width: 45mm;
+                margin-bottom: -20px;
+            }
+
+            #pieLogo {
+                margin: 0;
+                pad: 0;
+                font-size: 15px;
+            }
+            
+            
+            .contenedorCodigo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 3mm;
+                font-size: 24px;
+            }
+            
+            .datos, .detallesVentas {
+                display: flex;
+                flex-wrap: wrap;
+                font-size: 13px;
+                width: 100%;
+                padding: 0;
+                height: auto;
+            }
+            
+            .datosBloques {
+                flex: 0 0 60%;
+                margin: 0;
+                margin-left: 6.2px;
+            }
+            
+            .datosBloquesDerecha {
+                display: flex;
+                flex: 0 0 35%;
+                align-items: right;
+                justify-content: right;
+                margin: 0;
+                margin-right: 4px;
+            }
+            
+            h4 {
+                margin-top: 10px;
+                margin-bottom: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+            }
+            
+            .pie {
+                margin-top: 20px;
+                margin-bottom: 3px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                font-size: 10px;
+            }
+            
+            @media print {
+                body {  
+                    zoom: 1.05
+                }
+            }
+            
+                </style>
+    </head>
+<body>
+
+    <div id="ticketView">
+        <!-- "/src/assets/churreriaLogo.jpg" -->
+    </div>
+    <script>
+
+        window.impApi.receivePrintData((data) => {
+        console.log("Datos recibidos para el ticket: ", data)
+        const fechaHora = data.fecha
+        console.log(fechaHora)  
+        const fecha = fechaHora.split(" ")[0]
+        const hora = fechaHora.split(" ")[1]
+
+        const valorEnvio = data.precioenvio
+
+        const contenido = document.getElementById("ticketView")
+
+        
+
+
+        
+        contenido.innerHTML = `
+
+
+    <div class="contenedorLogo">        
+    <img class="logoTicket" src="assets/churreriaLogo.jpg">
+    <p id=pieLogo><strong>Churros al Paso</strong></p>
+    <caption><strong>¡¡Gracias por tu Compra!!</strong></caption>
+    </div>
+    <hr> 
+    <div class="redes">
+        <h2>Instagram:@la_churreria77</h2>
+    </div>
+    <hr>
+    <div class="contenedorCodigo">
+        <h3 id="codigo">N°${data.id}</h3>
+    </div> 
+    <hr> 
+    <div class="datos">
+        <p id="datoFecha" class="datosBloques">${fecha}</p>
+        <p id="datoHora" class="datosBloquesDerecha">${hora}</p>
+        <p class="datosBloques">Número de Ticket</p>
+        <p id="datoCodigoCompra" class="datosBloquesDerecha">${data.id}</p>
+        <p class="datosBloques">Metodo de Pago</p>
+        <p id="datoCodigoCompra" class="datosBloquesDerecha">${data.metodopago}</p>
+        ${data.direccion != "-" ? `<p class="datosBloques">Datos Cliente: </p>` : ""}
+        ${data.direccion != "-" ? `<p class="datosBloques">Dirección: ${data.direccion}</p>` : ""}
+        ${data.nombrecliente != "-" ? `<p class="datosBloques">${data.nombrecliente}` : ""}
+        ${data.numtelefono != "-" ? `<p class="datosBloquesDerecha">${data.numtelefono}` : ""}
+    </div>
+    <hr> 
+    <div class="detallesVentas" id="contenedorDetalles">
+
+        
+    </div>
+    <div>
+        <h4>TOTAL $ ${data.total + valorEnvio} </h4>
+    </div>
+    <hr>
+    <p class="pie">TICKET NO VALIDO COMO FACTURA</p>
+
+        
+    
+        `
+
+        const detallesTicket = document.getElementById("contenedorDetalles")
+
+    const arrayDetalles = data.detalles
+
+        for (let m = 0; m < arrayDetalles.length; m++) {
+            const pIzq = document.createElement("p") 
+            const pDer = document.createElement("p") 
+            
+            pIzq.classList.add("datosBloques")
+            pDer.classList.add("datosBloquesDerecha")
+
+            pIzq.innerHTML = `
+        ${parseFloat(arrayDetalles[m].cantidad)} ${arrayDetalles[m].producto}
+            `
+
+            pDer.innerHTML = `
+                ${arrayDetalles[m].precio}
+            `
+
+            detallesTicket.appendChild(pIzq)
+            detallesTicket.appendChild(pDer)
+        }
+        
+        const bloqueEnvio = document.createElement("p")
+        bloqueEnvio.classList.add("datosBloques")
+        bloqueEnvio.innerHTML = `Costo del Envio`
+
+        const bloqueValorEnvio = document.createElement("p")
+        bloqueValorEnvio.classList.add("datosBloquesDerecha")
+        bloqueValorEnvio.innerHTML = `${valorEnvio}`
+
+        if(valorEnvio > 0 ){
+            detallesTicket.appendChild(bloqueEnvio)
+            detallesTicket.appendChild(bloqueValorEnvio)
+        }
+
+    }) 
+
+        
+    </script>
+
+</body>
+</html>
